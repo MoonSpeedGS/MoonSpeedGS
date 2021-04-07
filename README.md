@@ -1,4 +1,5 @@
-### Hi there 👋
+Muy buenas, estas en los archivos para el desarrollo del videojuego online Moon Speed 
+el cual fue desarrollado en JavaScript, Html y CSS. espero que lo disfruten 
 
 <!--
 **MoonSpeedGS/MoonSpeedGS** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
