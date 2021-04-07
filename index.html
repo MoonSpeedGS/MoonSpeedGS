@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+      content="width=device-width,
+       initial-scale=1.0">
+    <title>StarWars</title>
+    <style>
+      html {
+        color: white;
+        background-image:
+        
+        url(https://media.giphy.com/media/aRZ4vTsHnyW6A/giphy.gif);
+        
+        background-repeat: no-repeat;
+        
+        background-position-x:
+          center;
+        
+        background-position-y:
+          center;
+        
+        background-attachment:
+          fixed;
+        
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+      .sprite {
+        position: fixed;
+        font-size: 3rem;
+      }
+
+      h1 {
+        color: yellow;
+      }
+      a {
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">StarWars</h1>
+    <p style="text-align: center; margin-bottom:0px">
+      <button onclick="asciendeAlcohon();">
+        ▲
+      </button>
+    </p>
+    <p style="text-align: center;margin-top:4px">
+      <button onclick="retrocedeAlcohon();">
+        ◀
+      </button>
+      <button onclick="desciendeAlcohon();">
+        ▼
+      </button>
+      <button onclick="avanzaAlcohon();">
+        ▶
+      </button>
+    </p>
+    <output id="estrellaMuerte"
+      class="sprite">
+    	<img src="https://i.ibb.co/Ctwym7W/estrella-mini.png" />
+    </output>
+    <output id="alcohonMilenario"
+      class="sprite">
+      <img src="https://i.ibb.co/sqTQL8G/alcon-sin-fondo-2.png">
+    </output>
+    <footer style="text-align:center">
+      <p id="pie">
+        &copy; 2021
+        Angel Isaac Garrido Sánchez.
+      </p>
+      <p> 
+        <a href="https://giphy.com">
+          https://giphy.com</a>.
+      </p>
+    </footer>
+    <script>
+      /*Funciones para que se mueva de forma ondulatoria la estrella de la muerte*/
+      const REFRESCO = 5;
+      const VELOCIDAD = 0.5;
+      const FRECUENCIA = 0.03;
+      let x = 0;
+      setInterval(
+        avanza, REFRESCO);
+      function avanza() {
+        const xMáxima =
+          window.innerWidth;
+        const amplitud =
+          window.innerHeight / 5;
+        const yBase =
+          window.innerHeight / 3;
+        y = yBase +
+          amplitud * Math.sin(FRECUENCIA * x);
+        estrellaMuerte.style =
+          `left: ${x}px; bottom: ${y}px`;
+        x =
+          (x + VELOCIDAD) % xMáxima;
+      }
+      /*-----------------------------------------------*/
+      /*Funciones para que se mueva el alcohon milenario*/
+      
+      const VELOCIDADN = 50;
+      let yBaseN;
+      let xMenor;
+      let xMayor;
+      let yMenor;
+      let yMayor;
+      actualizaAlcohon();
+      let xN = xMenor;
+      let yN = yMenor;
+      dibujaAlcohon();
+      function retrocedeAlcohon() {
+        actualizaAlcohon();
+        if (xN > xMenor) {
+          xN -= VELOCIDADN;
+        }
+        dibujaAlcohon();
+      }
+      function avanzaAlcohon() {
+        actualizaAlcohon();
+        if (xN < xMayor) {
+          xN += VELOCIDADN;
+        }
+        dibujaAlcohon();
+      }
+      function asciendeAlcohon() {
+        actualizaAlcohon();
+        if (yN > yMenor) {
+          yN -= VELOCIDADN;
+        }
+        dibujaAlcohon();
+      }
+      function desciendeAlcohon() {
+        actualizaAlcohon();
+        if (yN < yMayor) {
+          yN += VELOCIDADN;
+        }
+        dibujaAlcohon();
+      }
+      function actualizaAlcohon() {
+        yBaseN =
+          window.innerHeight / 4;
+        xMenor =
+          window.innerWidth / 9;
+        xMayor =
+          4 * window.innerWidth / 5;
+        yMenor =
+          window.innerHeight / 4;
+        yMayor =
+          3 * window.innerHeight / 4;
+      }
+      function dibujaAlcohon() {
+        alcohonMilenario.style =
+          `left: ${xN}px; bottom: ${yMenor}px;top:${yN}px; right: ${xMenor}px;`;
+      }
+      pie.style=`margin-top:${2.5 * window.innerHeight / 3.7}px`;
+    </script>
+  </body>
+</html>
