@@ -6,13 +6,13 @@
       content="width=device-width,
        initial-scale=1.0">
     <title>MoonSpeedGS</title>
-    
+    <link rel="icon" href="img/favicon.ico" type="image/ico">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/bootstrap.css">
    
   </head>
   <body>
-  	<section class="features_area" id="features_counter"  >
+  	<section class="features_area" id="features_counter"  style="display: block">
 		<div class="container" style="margin:50px auto">
           <div class="row counter_wrapper" style="background:transparent;border-radius:15px;border: 3px solid gold">
             <div class="col-md-12 col-md-offset-3" >
@@ -21,7 +21,7 @@
                         <div class="panel-body">
                             <div class="row justify-content-center">
                                 <div class="col-lg-12">
-                                    <form action="vista/juego.php" method="post" enctype="multipart/form-data" role="form"  >
+                                    
                                         <div class="row justify-content-center" style="text-align:center">
                                             <div class="col-lg-4 col-md-3 col-sm-3" style="text-align: right">
                                                 <img src="img/nave2.png" />
@@ -43,6 +43,13 @@
                                         <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
                                             Flechas para moverte y para ganar puntaje es el destruir las naves enemigas
                                         </p><br><br>
+                                        <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
+                                            Ingrese su nombre de usuario
+                                        </p><br>
+                                        <div style="text-align: center">
+                                            <input type="text" id="name" name="name" required="true" value="" tabindex="1" minlength="1" maxlength="10" 
+                                               style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px;background: transparent;color: gold;text-align: center"/><br>
+                                        </div><br><br>
                                         <p style="text-align: center; margin-bottom:0px;color: gold;font-size: 20px">
                                             Selecciona la nave preferida para empezar a jugar
                                         </p><br>
@@ -50,17 +57,17 @@
                                             <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
-                                                <input type="image" onclick="asignarID('../img/naveP.png');" src="img/naveP.png" height="130px !important" width="130px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
+                                                <input type="image" onclick="asignarID('img/naveP.png');" src="img/naveP.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
                                             </div><br>
                                             <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
-                                                <input type="image" onclick="asignarID('../img/naveP2.png');" src="img/naveP2.png" height="130px !important" width="130px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
+                                                <input type="image" onclick="asignarID('img/naveP2.png');" src="img/naveP2.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
                                             </div>
-                                            <input type="hidden" id="nave" name="nave" value=""/>
+                                            
                                             <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
                                             </div>
                                         </div>
                                         
-                                    </form>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -70,11 +77,311 @@
             </div>
         </div>
       </section>
-      <script>
-        function asignarID(idV){
-                
-            $("#nave").val(idV);
+      <section id="videogame"  style="display: none">
+        <script>
+            function aleatorio(
+                menor, mayor) {
+                return menor + Math.floor(
+                  Math.random() *
+                  (mayor - menor + 1));
+              }
 
+            /** @interface */
+            class SeMueve {
+              muévete() {
+                throw new Error("intf");
+              }
+            }
+
+            /** @implements {SeMueve} */
+            class NavePrincipal extends HTMLElement {
+                  
+              connectedCallback() {
+                this.x = Math.floor(
+                    window.innerWidth/2);
+                this.y = window.innerHeight /5;
+                this.innerHTML = "<img id='imgP' src='' height='100px !important' width='150px !important'/>";
+                this.style.position =
+                  "fixed";
+                this.style.fontSize =
+                  "2rem";
+                this.style.right =
+                  `${this.x}px`;
+                this.style.bottom =
+                  `${this.y}px`;
+
+              }
+              muévete() {
+                this.x = (this.x + 30) %
+                  window.innerWidth;
+                this.style.right =
+                  `${this.x}px`;
+              }
+              disparar(){
+                this.innerHTML ="<img src='img/f1.png' height='80px !important' width='40px !important'/>";
+
+                this.y = (this.y + 30) %
+                window.innerHeight;
+                this.style.bottom =
+                `${this.y}px`;
+
+
+              }
+              asciendeNave(){
+                 // window.alert(window.outerHeight);
+
+
+                if(this.y < window.innerHeight /1.6){
+                    this.y = (this.y + 30) %
+                    window.innerHeight;
+                    this.style.bottom =
+                    `${this.y}px`;
+                }
+              }
+              desciendeNave(){
+                 /* window.alert(window.innerHeight/4);
+                  window.alert(this.y);*/
+                if(this.y>window.innerHeight /4.8){
+                     this.y = (this.y - 30) %
+                    window.innerHeight;
+                    this.style.bottom =
+                    `${this.y}px`;
+                }
+
+              }
+              retrocedeNave(){
+                 /* window.alert(window.innerHeight/4);*/
+                  //window.alert(this.x);
+                //if(this.x< window.innerWidth/1.5){
+                     this.x = (this.x - 30) %
+                    window.innerWidth;
+                    this.style.left =
+                    `${this.x}px`;
+                //}
+
+               }
+               avanzaNave(){
+                 /* window.alert(window.innerHeight/4);*/
+                
+                //if(this.x< window.innerWidth/1.5){
+                     this.x = (this.x - 30) %
+                    window.innerWidth;
+                    this.style.right =
+                    `${this.x}px`;
+                //}
+
+              }
+
+              }
+
+            customElements.define(
+              "nave-princi", NavePrincipal);
+
+            /** @implements {SeMueve} */
+            class NaveEnemigaYellow
+              extends HTMLElement {
+              connectedCallback() {
+                this.x = aleatorio(0,
+                  Math.floor(
+                    window.innerWidth));
+                this.y = 50;
+                this.innerHTML = "<img src='img/enemy.png' id='movNav' height='100px !important' width='150px !important' style='transform: rotate(180deg);'/>";
+                this.style.position =
+                  "fixed";
+                this.style.fontSize =
+                  "2rem";
+                this.style.left =
+                  `${this.x}px`;
+                this.style.top =
+                  `${this.y}px`;
+              }
+              muévete() {
+
+                    
+                  this.x =
+                      (this.x + 10) % window.innerWidth;
+                  this.y =
+                      (this.y + 10) % window.innerHeight;
+                  /*this.y = (window.innerHeight / 3 )+
+                      (window.innerHeight / 5) * (Math.sin(0.05 * 0));*/
+                  
+                  this.style.left =
+                      `${this.x}px`;
+                  this.style.top =
+                      `${this.y}px`;
+                  
+                    
+              }
+            }
+            customElements.define(
+              "nave-yellow", NaveEnemigaYellow);
+
+            /** @implements {SeMueve} */
+            class NaveEnemigaRed
+              extends HTMLElement {
+              connectedCallback() {
+                this.x = aleatorio(0,
+                  Math.floor(
+                    window.innerWidth));
+                this.y = 50;
+                this.innerHTML = "<img src='img/enemy2.png' id='movNav' height='100px !important' width='150px !important'/>";
+                this.style.position =
+                  "fixed";
+                this.style.fontSize =
+                  "2rem";
+                this.style.left =
+                  `${this.x}px`;
+                this.style.top =
+                  `${this.y}px`;
+              }
+              muévete() {
+                this.y = (this.y + 10) %
+                  window.innerHeight;
+                this.style.top =
+                  `${this.y}px`;
+
+              }
+            }
+            customElements.define(
+              "nave-red", NaveEnemigaRed);
+
+           /*---------------------Controlador para la nave principal---------------------*/ 
+
+          class ControladorNaveP extends HTMLElement {
+            connectedCallback() {
+                
+                this.retrocedeNave = this.
+                retrocedeNave.bind(this);
+                this.avanzaNave = this.
+                avanzaNave.bind(this);
+                this.asciendeNave = this.
+                asciendeNave.bind(this);
+                this.desciendeNave = this.
+                desciendeNave.bind(this);
+
+              this.innerHTML =
+                /* html */
+                `
+
+                  <button onclick="this.
+                    parentElement.asciendeNave();"  style="margin:10px; background:transparent;border:2px gold solid;color:gold; border-radius:10px">
+                    ▲
+                  </button><br>
+                  <button onclick="this.
+                    parentElement.retrocedeNave();" style="background:transparent;border:2px gold solid;color:gold; border-radius:10px">
+                    ◀
+                  </button>
+                  <button onclick="this.
+                    parentElement.desciendeNave();"  style=" background:transparent;border:2px gold solid;color:gold; border-radius:10px">
+                    ▼
+                  </button>
+                  <button onclick="this.
+                    parentElement.avanzaNave();"  style="background:transparent;border:2px gold solid;color:gold; border-radius:10px">
+                    ▶
+                  </button>
+                    
+
+                `;
+              this.naveP =
+                new NavePrincipal();
+              this.enemigas =
+                [new NaveEnemigaRed(),
+                new NaveEnemigaYellow(),
+                new NaveEnemigaRed(),
+                new NaveEnemigaYellow(),
+                ];
+              this.append(this.naveP);
+              for (let nav of this.enemigas) {
+                 setInterval(function(){
+                      setInterval(() => {
+                         nav.muévete();
+                      },600);
+                    },6000);
+                this.append(nav);
+              }
+
+            }
+                
+                
+              retrocedeNave() {
+                this.naveP.retrocedeNave();
+              }
+              avanzaNave() {
+                this.naveP.avanzaNave();
+              }
+               asciendeNave() {
+               this.naveP.asciendeNave();
+              }
+               desciendeNave() {
+                this.naveP.desciendeNave();
+              }
+              
+              
+
+          }
+          customElements.define(
+            "controlador-web",
+            ControladorNaveP);
+          </script>
+
+        <div class="row justify-content-center" style="text-align:center; color:gold;">
+            <div class="col-lg-5 col-md-6 col-sm-6" style="text-align: center">
+                <h2>Usuario: <input type="text"  disabled id="user" style="background:transparent;border:0px solid black;color:gold;width:200px; " value=""/></h2>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-6" style="text-align: center;">
+                <h2>Puntaje: <input type="text"  disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="100"/> </h2>
+            </div><br>
+        </div>
+
+
+        <footer style="text-align:center">
+          <p id="pie">
+            <controlador-web>
+            </controlador-web><br><br>
+            &copy; 2021
+            Angel Isaac Garrido Sánchez.
+
+          </p>
+        </footer>
+        <script>
+          pie.style=`margin-top:${2.7* window.innerHeight / 3.7}px;text-align: center; font-size:23px;color:white`;
+        </script>
+      </section>
+      <script>
+        document.addEventListener('keydown', mover);
+        function mover(e){
+            naveP = new NavePrincipal();
+            if(e.keyCode == '39'){//derecha
+               naveP.avanzaNave();
+            }
+            if(e.keyCode == '37'){//Izquierda
+               naveP.retrocedeNave();
+            }
+            if(e.keyCode == '38'){//arriba
+               naveP.asciendeNave();
+            }
+            if(e.keyCode == '40'){//abajo
+               naveP.desciendeNave();
+            }
+         }
+        function asignarID(idV){
+           // $("#nave").val(idV);
+            
+            var name = document.getElementById('name');
+            //window.alert(name.value);
+            if(name.value != ''){
+                var im = document.getElementById('imgP');
+                im.src = idV;
+                var user = document.getElementById('user');
+                user.value = name.value;
+                var instrucciones = document.getElementById('features_counter');
+                instrucciones.style.display = "none";
+                var videogame = document.getElementById('videogame');
+                videogame.style.display = "block";
+            }else{
+                window.alert('Error, por favor ingrese un nombre');
+            }
+            
         }
       </script>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
