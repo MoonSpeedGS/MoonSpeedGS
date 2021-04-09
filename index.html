@@ -99,7 +99,7 @@
               connectedCallback() {
                 this.x = Math.floor(
                     window.innerWidth/2);
-                this.y = window.innerHeight /5;
+                this.y = window.innerHeight /4.2;
                 this.innerHTML = "<img id='imgP' src='' height='100px !important' width='150px !important'/>";
                 this.style.position =
                   "fixed";
@@ -141,7 +141,7 @@
               desciendeNave(){
                  /* window.alert(window.innerHeight/4);
                   window.alert(this.y);*/
-                if(this.y>window.innerHeight /4.8){
+                if(this.y>window.innerHeight /4.2){
                      this.y = (this.y - 30) %
                     window.innerHeight;
                     this.style.bottom =
@@ -295,8 +295,8 @@
                  setInterval(function(){
                       setInterval(() => {
                          nav.muévete();
-                      },600);
-                    },6000);
+                      },40);
+                    },4000);
                 this.append(nav);
               }
 
@@ -324,16 +324,18 @@
             ControladorNaveP);
           </script>
 
-        <div class="row justify-content-center" style="text-align:center; color:gold;">
-            <div class="col-lg-5 col-md-6 col-sm-6" style="text-align: center">
-                <h2>Usuario: <input type="text"  disabled id="user" style="background:transparent;border:0px solid black;color:gold;width:200px; " value=""/></h2>
+        
+        <div class="container" >
+            <div class="row justify-content-center" style="color: gold">
+                <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center">
+                    <h3>Usuario: <input type="text" disabled  id="user" style="background:transparent;border:0px solid black;color:gold;width:190px; " value=""/></h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;">
+                    <h3>Puntaje: <input type="text"  disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="0"/> </h3>
+                </div><br>
             </div>
-            <div class="col-lg-5 col-md-6 col-sm-6" style="text-align: center;">
-                <h2>Puntaje: <input type="text"  disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="100"/> </h2>
-            </div><br>
         </div>
-
-
+        
         <footer style="text-align:center">
           <p id="pie">
             <controlador-web>
