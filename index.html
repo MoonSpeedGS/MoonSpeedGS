@@ -196,21 +196,25 @@
                   `${this.y}px`;
               }
               muévete() {
-
-                    
+               
+               if(this.y<window.innerHeight/1.3){
+                  
                   this.x =
                       (this.x + 10) % window.innerWidth;
                   this.y =
                       (this.y + 10) % window.innerHeight;
                   /*this.y = (window.innerHeight / 3 )+
                       (window.innerHeight / 5) * (Math.sin(0.05 * 0));*/
-                  
+               }else{
+                  this.x =aleatorio(0,
+                  Math.floor(
+                    window.innerWidth));
+                  this.y =50;
+               }
                   this.style.left =
                       `${this.x}px`;
                   this.style.top =
                       `${this.y}px`;
-                  
-                    
               }
             }
             customElements.define(
@@ -235,10 +239,24 @@
                   `${this.y}px`;
               }
               muévete() {
-                this.y = (this.y + 10) %
+                  
+               if(this.y<window.innerHeight/1.4){
+                  this.y = (this.y + 10) %
                   window.innerHeight;
-                this.style.top =
+                   this.style.top =
                   `${this.y}px`;
+               }else{
+                  this.x =aleatorio(0,
+                  Math.floor(
+                    window.innerWidth));
+                  this.y =50;
+                   this.style.left =
+                      `${this.x}px`;
+                  this.style.top =
+                      `${this.y}px`;
+               }
+                  
+              
 
               }
             }
@@ -291,6 +309,7 @@
                 new NaveEnemigaYellow(),
                 ];
               this.append(this.naveP);
+                
               for (let nav of this.enemigas) {
                  setInterval(function(){
                       setInterval(() => {
