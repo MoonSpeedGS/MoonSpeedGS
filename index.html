@@ -129,7 +129,7 @@
                   var instrucciones = document.getElementById('features_counter');
                   //instrucciones.style.display = "block";
                   var videogame = document.getElementById('videogame');
-                  videogame.style.filter = "blur(4px)";
+                  //videogame.style.filter = "blur(4px)";
                   //user.value="";
                   var mensajeGameOver = document.getElementById('mensaje');
                   mensajeGameOver.style.display = "block";
@@ -266,7 +266,7 @@
                 this.resetearNave(this);
               }
               resetearNave(value){
-                  value.x = aleatorio(0,Math.floor(window.innerWidth));
+                  value.x = aleatorio(0,1*window.innerWidth/9);
                   value.y = 50;
                   value.style.left =`${value.x}px`;
                   value.style.top =`${value.y}px`;
@@ -290,7 +290,10 @@
                           (this.y + 6) % window.innerHeight;
                         
                    }else{
-                      puntaje.value=parseInt(puntaje.value,10)+1;  
+                      if(avanza.value=='true'){
+                         puntaje.value=parseInt(puntaje.value,10)+1;  
+                      }
+                      
                       this.x =aleatorio(0,
                       Math.floor(
                         window.innerWidth));
@@ -323,7 +326,7 @@
               }
               
               resetearNave(value){
-                  value.x = aleatorio(0,Math.floor(window.innerWidth));
+                  value.x = aleatorio(0,1*window.innerWidth/9);
                   value.y = 50;
                   value.style.left =`${value.x}px`;
                   value.style.top =`${value.y}px`;
@@ -343,7 +346,9 @@
                        this.style.top =
                       `${this.y}px`;
                    }else{
-                       puntaje.value=parseInt(puntaje.value,10)+1; 
+                      if(avanza.value=='true'){
+                         puntaje.value=parseInt(puntaje.value,10)+1;  
+                      }
                       this.x =aleatorio(0,
                       Math.floor(
                         window.innerWidth));
@@ -503,7 +508,7 @@
                 instrucciones.style.display = "none";
                 var videogame = document.getElementById('videogame');
                 videogame.style.display = "block";
-                videogame.style.filter = "blur(0px)";
+                //videogame.style.filter = "blur(0px)";
                 var nP=new NavePrincipal();
                 nP.resetearNave(document.querySelector("nave-princi"));
                 var nR=new NaveEnemigaRed();
