@@ -58,4 +58,257 @@ body {margin: 0}
   }  
 }
 
+/*-----------Estilos para el cuadro de dialogo------------*/
+/* cuadro de dialogo : http://www.bloguero-ec.com */
+
+/* bg oscuro tras el cuadro */
+
+.dialog-overlay{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    
+
+    z-index: 10;
+    
+}
+
+/* tema del cuadro */
+
+.dialog-card{
+    box-sizing: border-box;
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -285px;
+    top: 20%;
+
+    font: bold 14px sans-serif;
+
+    border-radius: 15px;
+    background-color:  #ffffff;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.12);
+    padding: 45px 50px;
+}
+
+.dialog-card .dialog-question-sign{
+    float: left;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    color:  #ffffff;
+    text-align: center;
+    line-height: 68px;
+    font-size: 40px;
+    margin-right: 50px;
+    background-color:  #b4d8f3;
+}
+
+.dialog-card .dialog-info{
+    float: center;
+    max-width: 500px;
+}
+
+.dialog-card h5{	/* titulo */
+    color:  #383c3e;
+    font-size: 24px;
+    margin: 5px 0 30px;
+}
+
+.dialog-card p{		/* texto */
+    color:  #595d60;
+    font-weight: normal;
+    line-height: 21px;
+
+    margin: 30px 0;
+}
+
+.dialog-card .dialog-confirm-button,
+.dialog-card .dialog-reject-button{
+    font-weight: inherit;
+    box-sizing: border-box;
+    color: #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    padding: 12px 40px;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+}
+.dialog-confirm-button,
+ .dialog-reject-button{
+    font-weight: inherit;
+    box-sizing: border-box;
+    color: #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    padding: 12px 40px;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+}
+
+.dialog-card .dialog-confirm-button{
+    background-color:  #be0404;/*#045881*/
+    border-radius: 15px;
+    margin-right: 12px;
+    border: 1px solid black;
+}
+.dialog-confirm-button{
+    background-color:  #be0404;
+    margin-right: 12px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.dialog-card .dialog-reject-button{
+    background-color:  white;
+    border-radius: 15px;
+    border: 1px solid black;
+     
+}.dialog-reject-button{
+    background-color:  white;
+    border-radius: 15px;
+    border: 1px solid black;
+    
+}
+
+.dialog-card button:hover{
+    opacity:0.96;
+}
+
+.dialog-card button:active{
+    position:relative;
+    bottom:-1px;
+}
+
+.botonAceptar{
+    width:100px;height:43px;
+}
+.btnOpcIz{
+    background: -webkit-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+    background: -moz-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+    background: -ms-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+    background: -o-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+    /*background: linear-gradient(180deg, #777777 0%,  #ff8000 100%); */
+    background: linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+    border-radius:0px 0px 0px 16px;
+}
+.btnOpcDe{
+    background: -webkit-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+    background: -moz-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+    background: -ms-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+    background: -o-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+   /* background: linear-gradient(180deg, #777777 0%,  #00acee 100%); */
+     background: linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+    border-radius:0px 0px 16px 0px;
+}
+
+/* hacemos responsive el cuadro de dialogo con estas lineas */
+
+
+@media (max-width: 600px) {
+    
+    .botonAceptar{
+        width:85px;height:40px;
+    }
+    .btnOpcIz{ 
+        border-radius:0px;
+        background: -webkit-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+        background: -moz-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+        background: -ms-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+        background: -o-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+        /*background: linear-gradient(180deg, #777777 0%,  #ff8000 100%); */
+        background: linear-gradient(180deg, #ad1419 0%,  #dc0108 100%);
+    }
+    .btnOpcDe{
+        border-radius:0px 0px 16px 16px;
+         background: -webkit-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+        background: -moz-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+        background: -ms-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+        background: -o-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+       /* background: linear-gradient(180deg, #777777 0%,  #00acee 100%); */
+         background: linear-gradient(0deg, #ad1419 0%,  #dc0108 100%);
+    }
+    
+
+    .dialog-card{
+        width: 350px;
+        margin-left: -175px;
+        margin-top: -200px;
+        text-align: center;
+
+        padding: 45px 50px;
+    }
+
+    .dialog-card .dialog-question-sign{
+        margin: 0 auto 25px;
+    }
+
+    .dialog-card .dialog-question-sign,
+    .dialog-card .dialog-info{
+        float: none;
+    }
+
+    .dialog-card p{
+        text-align: left;
+    }
+
+    .dialog-card .dialog-confirm-button{
+        float: center;
+    }
+
+    .dialog-card .dialog-reject-button{
+        float: center;
+    }
+}
+
+
+@media (max-width: 400px) {
+    
+    .btnOpcIz{ 
+        border-radius:0px;
+        background: -webkit-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+        background: -moz-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+        background: -ms-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+        background: -o-linear-gradient(90deg, #ad1419 0%,  #dc0108 100%);
+        /*background: linear-gradient(180deg, #777777 0%,  #ff8000 100%); */
+        background: linear-gradient(180deg, #ad1419 0%,  #dc0108 100%);
+    }
+    .btnOpcDe{
+        border-radius:0px 0px 16px 16px;
+         background: -webkit-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+        background: -moz-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+        background: -ms-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+        background: -o-linear-gradient(270deg, #ad1419 0%,  #dc0108 100%);
+       /* background: linear-gradient(180deg, #777777 0%,  #00acee 100%); */
+         background: linear-gradient(0deg, #ad1419 0%,  #dc0108 100%);
+    }
+    
+    .botonAceptar{
+        width:83px;height:43px;
+    }
+
+    .dialog-card{
+        width: 250px;
+        margin-left: -125px;
+
+        padding: 25px 30px;
+    }
+
+    .dialog-card .dialog-confirm-button,
+    .dialog-card .dialog-reject-button{
+        padding: 12px 32px;
+    }
+
+}
+
+
+
+
+
+
 
