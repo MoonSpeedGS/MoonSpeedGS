@@ -153,8 +153,8 @@
                  // window.alert(window.outerHeight);
 
 
-                if(this.y < window.innerHeight /1.6){
-                    this.y = (this.y + 30) %
+                if(this.y < window.innerHeight /1.3){
+                    this.y = (this.y + 50) %
                     window.innerHeight;
                     this.style.bottom =
                     `${this.y}px`;
@@ -164,32 +164,29 @@
                  /* window.alert(window.innerHeight/4);
                   window.alert(this.y);*/
                 if(this.y>window.innerHeight /4.2){
-                     this.y = (this.y - 30) %
+                     this.y = (this.y - 50) %
                     window.innerHeight;
                     this.style.bottom =
                     `${this.y}px`;
                 }
 
               }
-              retrocedeNave(){
-                 /* window.alert(window.innerHeight/4);*/
-                  //window.alert(this.x);
-                //if(this.x< window.innerWidth/1.5){
-                     this.x = (this.x - 30) %
-                    window.innerWidth;
-                    this.style.left =
-                    `${this.x}px`;
-                //}
-
-               }
                avanzaNave(){
                  /* window.alert(window.innerHeight/4);*/
-                
-                    if(this.x< (3*window.innerWidth/5)){
-                         this.x = (this.x - 30) %
-                        window.innerWidth;
-                        this.style.right =
+                  //window.alert(this.x);
+                   if (this.x > 1*window.innerWidth/9) {
+                        this.x = (this.x - 50) % window.innerWidth;
+                        this.style.right= 
                         `${this.x}px`;
+                    }
+
+               }
+                retrocedeNave(){
+                 /* window.alert(window.innerHeight/4);*/
+                    if (this.x <  4.2 * window.innerWidth / 5) {
+                        this.x = (this.x + 50) % window.innerWidth;
+                        this.style.right= 
+                        `${this.x}px`;     
                     }
 
                 }
@@ -356,7 +353,7 @@
               for (let nav of this.enemigas) {
                  setInterval(function(){
                       setInterval(() => {
-                         nav.muévete();
+                        // nav.muévete();
                       },80);
                     },4000);
                 this.append(nav);
