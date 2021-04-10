@@ -99,9 +99,9 @@
               }
             function gameOver(){
                   var instrucciones = document.getElementById('features_counter');
-                  instrucciones.style.display = "block";
+                  //instrucciones.style.display = "block";
                   var videogame = document.getElementById('videogame');
-                  videogame.style.display = "none";
+                  //videogame.style.display = "none";
                   user.value="";
             }
 
@@ -158,6 +158,11 @@
                     window.innerHeight;
                     this.style.bottom =
                     `${this.y}px`;
+                   if(imgP.src.includes('P2')){
+                       imgP.src="img/naveP2.png";
+                   }else{
+                       imgP.src="img/naveP.png";
+                   }
                 }
               }
               desciendeNave(){
@@ -168,6 +173,11 @@
                     window.innerHeight;
                     this.style.bottom =
                     `${this.y}px`;
+                   if(imgP.src.includes('P2')){
+                       imgP.src="img/naveP2.png";
+                   }else{
+                       imgP.src="img/naveP.png";
+                   }
                 }
 
               }
@@ -178,6 +188,12 @@
                         this.x = (this.x - 50) % window.innerWidth;
                         this.style.right= 
                         `${this.x}px`;
+                       
+                       if(imgP.src.includes('P2')){
+                           imgP.src="img/naveP2De.png";
+                       }else{
+                           imgP.src="img/navePDe.png";
+                       }
                     }
 
                }
@@ -186,7 +202,12 @@
                     if (this.x <  4.2 * window.innerWidth / 5) {
                         this.x = (this.x + 50) % window.innerWidth;
                         this.style.right= 
-                        `${this.x}px`;     
+                        `${this.x}px`;    
+                        if(imgP.src.includes('P2')){
+                           imgP.src="img/naveP2Iz.png";
+                        }else{
+                           imgP.src="img/navePIz.png";
+                        }
                     }
 
                 }
