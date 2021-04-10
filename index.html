@@ -85,6 +85,25 @@
                   Math.random() *
                   (mayor - menor + 1));
               }
+            function chocaNave(e1, e2) {
+                const rE1 =
+                  e1.getBoundingClientRect();
+                const rE2 =
+                  e2.getBoundingClientRect();
+                
+                return (rE1.right >= rE2.left &&
+                  rE1.left <= rE2.right &&
+                  rE1.top <= rE2.bottom &&
+                  rE1.bottom >= rE2.top);
+                
+              }
+            function gameOver(){
+                  var instrucciones = document.getElementById('features_counter');
+                  instrucciones.style.display = "block";
+                  var videogame = document.getElementById('videogame');
+                  videogame.style.display = "none";
+                  user.value="";
+            }
 
             /** @interface */
             class SeMueve {
@@ -109,6 +128,7 @@
                   `${this.x}px`;
                 this.style.bottom =
                   `${this.y}px`;
+                this.id="con";
 
               }
               muévete() {
@@ -127,6 +147,8 @@
 
 
               }
+            
+              
               asciendeNave(){
                  // window.alert(window.outerHeight);
 
@@ -163,14 +185,19 @@
                avanzaNave(){
                  /* window.alert(window.innerHeight/4);*/
                 
-                //if(this.x< window.innerWidth/1.5){
-                     this.x = (this.x - 30) %
-                    window.innerWidth;
-                    this.style.right =
-                    `${this.x}px`;
-                //}
+                    if(this.x< (3*window.innerWidth/5)){
+                         this.x = (this.x - 30) %
+                        window.innerWidth;
+                        this.style.right =
+                        `${this.x}px`;
+                    }
 
-              }
+                }
+                actualizaNave(valor){
+                    //var im = document.getElementById('imgP');
+                    imgP.style =
+                        `left: ${xN}px; bottom: ${yMenor}px;top:${yN}px; right: ${xMenor}px;`;
+                }
 
               }
 
@@ -195,26 +222,36 @@
                 this.style.top =
                   `${this.y}px`;
               }
+            
               muévete() {
-               
-               if(this.y<window.innerHeight/1.3){
+                if (chocaNave(this, imgP) && user.value!='') {
+                  imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
+                  gameOver();
+                }else{
+                    if(this.y<window.innerHeight/1.3){
                   
-                  this.x =
-                      (this.x + 10) % window.innerWidth;
-                  this.y =
-                      (this.y + 10) % window.innerHeight;
-                  /*this.y = (window.innerHeight / 3 )+
-                      (window.innerHeight / 5) * (Math.sin(0.05 * 0));*/
-               }else{
-                  this.x =aleatorio(0,
-                  Math.floor(
-                    window.innerWidth));
-                  this.y =50;
-               }
-                  this.style.left =
-                      `${this.x}px`;
-                  this.style.top =
-                      `${this.y}px`;
+                      /*this.x = window.innerWidth / 3 +
+                       window.innerWidth / 5 * Math.sin(0.2 * this.y);*/
+                      this.x =
+                          (this.x + 10) % window.innerWidth;
+                      this.y =
+                          (this.y + 10) % window.innerHeight;
+                        
+                   }else{
+                      puntaje.value=parseInt(puntaje.value,10)+1;  
+                      this.x =aleatorio(0,
+                      Math.floor(
+                        window.innerWidth));
+                      this.y =50;
+                   }
+                      this.style.left =
+                          `${this.x}px`;
+                      this.style.top =
+                          `${this.y}px`;
+                   //this.y = (this.y + 1) % window.innerWidth;
+                }
+                  
+               
               }
             }
             customElements.define(
@@ -239,22 +276,28 @@
                   `${this.y}px`;
               }
               muévete() {
-                  
-               if(this.y<window.innerHeight/1.4){
-                  this.y = (this.y + 10) %
-                  window.innerHeight;
-                   this.style.top =
-                  `${this.y}px`;
-               }else{
-                  this.x =aleatorio(0,
-                  Math.floor(
-                    window.innerWidth));
-                  this.y =50;
-                   this.style.left =
-                      `${this.x}px`;
-                  this.style.top =
+                if (chocaNave(this, imgP) && user.value!='') {
+                  imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
+                  gameOver();
+                }else{
+                    if(this.y<window.innerHeight/1.4){
+                      this.y = (this.y + 10) %
+                      window.innerHeight;
+                       this.style.top =
                       `${this.y}px`;
-               }
+                   }else{
+                       puntaje.value=parseInt(puntaje.value,10)+1; 
+                      this.x =aleatorio(0,
+                      Math.floor(
+                        window.innerWidth));
+                      this.y =50;
+                       this.style.left =
+                          `${this.x}px`;
+                      this.style.top =
+                          `${this.y}px`;
+                   }
+                }
+               
                   
               
 
@@ -314,7 +357,7 @@
                  setInterval(function(){
                       setInterval(() => {
                          nav.muévete();
-                      },40);
+                      },80);
                     },4000);
                 this.append(nav);
               }
@@ -350,25 +393,26 @@
                     <h3>Usuario: <input type="text" disabled  id="user" style="background:transparent;border:0px solid black;color:gold;width:190px; " value=""/></h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;">
-                    <h3>Puntaje: <input type="text"  disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="0"/> </h3>
+                    <h3>Puntaje: <input type="text" id="puntaje" disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="0"/> </h3>
                 </div><br>
             </div>
         </div>
         
-        <footer style="text-align:center">
-          <p id="pie">
+        
+          <div id="pie" style="text-align:center">
             <controlador-web>
             </controlador-web><br><br>
-            &copy; 2021
-            Angel Isaac Garrido Sánchez.
-
-          </p>
-        </footer>
-        <script>
-          pie.style=`margin-top:${2.7* window.innerHeight / 3.7}px;text-align: center; font-size:23px;color:white`;
-        </script>
+              <footer >
+                &copy; 2021
+                Angel Isaac Garrido Sánchez.
+              </footer>
+          </div>
+        
       </section>
       <script>
+        /*Este script me sirve para la funcionalidad de la página*/
+        pie.style=`margin-top:${2.7* window.innerHeight / 3.7}px;text-align: center; font-size:23px;color:white`;
+          
         document.addEventListener('keydown', mover);
         function mover(e){
             naveP = new NavePrincipal();
@@ -383,6 +427,7 @@
             }
             if(e.keyCode == '40'){//abajo
                naveP.desciendeNave();
+                
             }
          }
         function asignarID(idV){
