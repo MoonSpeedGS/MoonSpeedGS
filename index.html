@@ -184,12 +184,12 @@
               asciendeNave(){
                  // window.alert(window.outerHeight);
 
-
-                if(this.y < window.innerHeight /1.3){
-                    this.y = (this.y + 50) %
+                var value = document.querySelector("nave-princi");
+                if(value.y < window.innerHeight /1.3){
+                    value.y = (value.y + 50) %
                     window.innerHeight;
-                    this.style.bottom =
-                    `${this.y}px`;
+                    value.style.bottom =
+                    `${value.y}px`;
                    if(imgP.src.includes('P2')){
                        imgP.src="img/naveP2.png";
                    }else{
@@ -200,11 +200,12 @@
               desciendeNave(){
                  /* window.alert(window.innerHeight/4);
                   window.alert(this.y);*/
-                if(this.y>window.innerHeight /4.2){
-                     this.y = (this.y - 50) %
+                var value = document.querySelector("nave-princi");
+                if(value.y>window.innerHeight /4.2){
+                     value.y = (value.y - 50) %
                     window.innerHeight;
-                    this.style.bottom =
-                    `${this.y}px`;
+                    value.style.bottom =
+                    `${value.y}px`;
                    if(imgP.src.includes('P2')){
                        imgP.src="img/naveP2.png";
                    }else{
@@ -216,10 +217,11 @@
                avanzaNave(){
                  /* window.alert(window.innerHeight/4);*/
                   //window.alert(this.x);
-                   if (this.x > 1*window.innerWidth/9) {
-                        this.x = (this.x - 50) % window.innerWidth;
-                        this.style.right= 
-                        `${this.x}px`;
+                   var value = document.querySelector("nave-princi");
+                   if (value.x > 1*window.innerWidth/9) {
+                        value.x = (value.x - 50) % window.innerWidth;
+                        value.style.right= 
+                        `${value.x}px`;
                        
                        if(imgP.src.includes('P2')){
                            imgP.src="img/naveP2De.png";
@@ -231,10 +233,11 @@
                }
                 retrocedeNave(){
                  /* window.alert(window.innerHeight/4);*/
-                    if (this.x <  4.2 * window.innerWidth / 5) {
-                        this.x = (this.x + 50) % window.innerWidth;
-                        this.style.right= 
-                        `${this.x}px`;    
+                    var value = document.querySelector("nave-princi");
+                    if (value.x <  4.2 * window.innerWidth / 5) {
+                        value.x = (value.x + 50) % window.innerWidth;
+                        value.style.right= 
+                        `${value.x}px`;    
                         if(imgP.src.includes('P2')){
                            imgP.src="img/naveP2Iz.png";
                         }else{
@@ -280,7 +283,7 @@
                   }
                   gameOver();
                 }else{
-                    if(this.y<window.innerHeight/1.3){
+                    if(this.y<window.innerHeight/1.5){
                   
                       /*this.x = window.innerWidth / 3 +
                        window.innerWidth / 5 * Math.sin(0.2 * this.y);*/
@@ -340,7 +343,7 @@
                   }
                   gameOver();
                 }else{
-                    if(this.y<window.innerHeight/1.4){
+                    if(this.y<window.innerHeight/1.5){
                       this.y = (this.y + 6) %
                       window.innerHeight;
                        this.style.top =
@@ -475,18 +478,26 @@
           
         document.addEventListener('keydown', mover);
         function mover(e){
-            naveP = new NavePrincipal();
+            var naveP = new NavePrincipal();
             if(e.keyCode == '39'){//derecha
-               naveP.avanzaNave();
+               if(avanza.value=='true'){
+                  naveP.avanzaNave();
+               }
             }
             if(e.keyCode == '37'){//Izquierda
-               naveP.retrocedeNave();
+               if(avanza.value=='true'){
+                  naveP.retrocedeNave();
+               }
             }
             if(e.keyCode == '38'){//arriba
-               naveP.asciendeNave();
+               if(avanza.value=='true'){
+                  naveP.asciendeNave();
+               }
             }
             if(e.keyCode == '40'){//abajo
-               naveP.desciendeNave();
+               if(avanza.value=='true'){
+                  naveP.desciendeNave();
+               }
                 
             }
          }
