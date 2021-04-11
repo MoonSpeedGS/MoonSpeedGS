@@ -12,6 +12,7 @@
    
   </head>
   <body>
+    <!-- ****************División del modal para mostrar cuando se termina el juego*****************************--> 
     <div id="mensaje" class="dialog-overlay" style=" display:run-in;">
         <div class="dialog-card" style=";padding:0px;border:3px gold solid;background: transparent">
             <div class="col-lg-12 col-md-12 col-sm-12" style="background:transparent;padding-top:5px;border-radius:14px 14px 0px 0px;border-bottom:3px solid gold;text-align: center">
@@ -31,10 +32,10 @@
                         <h5 style="color:white;">Para volver a jugar selecciona la nave que deseas</h5>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12" style="text-align: center">
-                        <input type="image" onclick="asignarID('img/naveP.png');" src="img/naveP.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
+                        <input type="image" onclick="comenzarJuego('img/naveP.png');" src="img/naveP.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
                     </div><br>
                     <div class="col-lg-6 col-md-12 col-sm-12" style="text-align: center">
-                        <input type="image" onclick="asignarID('img/naveP2.png');" src="img/naveP2.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
+                        <input type="image" onclick="comenzarJuego('img/naveP2.png');" src="img/naveP2.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
                     </div>
 
                 </div>
@@ -42,6 +43,9 @@
             </div>
         </div>
     </div>
+     <!-- *********************Termina división del modal**********************************--> 
+      
+     <!-- ****************División de las instrucciones al empezar el juego*****************************--> 
   	<section class="features_area" id="features_counter"  style="display: block">
 		<div class="container" style="margin:50px auto">
           <div class="row counter_wrapper" style="background:transparent;border-radius:15px;border: 3px solid gold">
@@ -51,54 +55,51 @@
                         <div class="panel-body">
                             <div class="row justify-content-center">
                                 <div class="col-lg-12">
-                                    
-                                        <div class="row justify-content-center" style="text-align:center">
-                                            <div class="col-lg-4 col-md-3 col-sm-3" style="text-align: right">
-                                                <img src="img/nave2.png" />
-                                            </div>
-                                            <div class="col-lg-4 col-md-5 col-sm-5">
-                                                <h1 style="color:gold;text-align: center;font-family: Showcard Gothic,sans-serif">Moon Speed</h1><br>
-                                            </div>
-                                            <div class="col-lg-4 col-md-3 col-sm-3" style="text-align: left">
-                                                <img src="img/nave2.png" />
-                                            </div>
+                                    <div class="row justify-content-center" style="text-align:center">
+                                        <div class="col-lg-4 col-md-3 col-sm-3" style="text-align: right">
+                                            <img src="img/nave2.png" />
                                         </div>
-                                        
-                                        <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                            Bienvenidos a MoonSpeed
-                                        </p><br>
-                                        <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                            Instrucciones:
-                                        </p><br>
-                                        <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                            Las flechas son para moverse y para ganar puntos las naves enemigas deben de llegar al límite inferior y si chocas con alguna pierdes el juego
-                                        </p><br><br>
-                                        <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                            Ingrese su nombre de usuario
-                                        </p><br>
-                                        <div style="text-align: center">
-                                            <input type="text" id="name" name="name" required="true" value="" tabindex="1" minlength="1" maxlength="10" 
-                                               style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px;background: transparent;color: gold;text-align: center"/><br>
-                                        </div><br><br>
-                                        <p style="text-align: center; margin-bottom:0px;color: gold;font-size: 20px">
-                                            Selecciona la nave preferida para empezar a jugar
-                                        </p><br>
-                                        <div class="row justify-content-center" style="text-align:center">
-                                            <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
-                                                <input type="image" onclick="asignarID('img/naveP.png');" src="img/naveP.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
-                                            </div><br>
-                                            <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
-                                                <input type="image" onclick="asignarID('img/naveP2.png');" src="img/naveP2.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
-                                            </div>
-                                            
-                                            <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
-                                            </div>
-                                            <input type="hidden" id="avanza" value="false"/>
+                                        <div class="col-lg-4 col-md-5 col-sm-5">
+                                            <h1 style="color:gold;text-align: center;font-family: Showcard Gothic,sans-serif">Moon Speed</h1><br>
                                         </div>
-                                        
-                                    
+                                        <div class="col-lg-4 col-md-3 col-sm-3" style="text-align: left">
+                                            <img src="img/nave2.png" />
+                                        </div>
+                                    </div>
+
+                                    <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
+                                        Bienvenidos a MoonSpeed
+                                    </p><br>
+                                    <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
+                                        Instrucciones:
+                                    </p><br>
+                                    <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
+                                        Las flechas son para moverse y para ganar puntos las naves enemigas deben de llegar al límite inferior y si chocas con alguna pierdes el juego
+                                    </p><br><br>
+                                    <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
+                                        Ingrese su nombre de usuario
+                                    </p><br>
+                                    <div style="text-align: center">
+                                        <input type="text" id="name" name="name" required="true" value="" tabindex="1" minlength="1" maxlength="10" 
+                                           style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px;background: transparent;color: gold;text-align: center"/><br>
+                                    </div><br><br>
+                                    <p style="text-align: center; margin-bottom:0px;color: gold;font-size: 20px">
+                                        Selecciona la nave preferida para empezar a jugar
+                                    </p><br>
+                                    <div class="row justify-content-center" style="text-align:center">
+                                        <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
+                                            <input type="image" onclick="comenzarJuego('img/naveP.png');" src="img/naveP.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
+                                        </div><br>
+                                        <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
+                                            <input type="image" onclick="comenzarJuego('img/naveP2.png');" src="img/naveP2.png" height="130px !important" width="180px !important" style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px"/>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
+                                        </div>
+                                        <input type="hidden" id="avanza" value="false"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -108,41 +109,65 @@
             </div>
         </div>
       </section>
+      <!-- ****************Termina la división de las instrucciones al empezar el juego*****************************--> 
+      
+      <!-- ****************División donde estan los custom-elements y el píe de página*****************************--> 
       <section id="videogame"  style="display: none; ">
+        <div class="container" >
+            <div class="row justify-content-center" style="color: gold">
+                <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center">
+                    <h3>Usuario: <input type="text" disabled  id="user" style="background:transparent;border:0px solid black;color:gold;width:190px; " value=""/></h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;">
+                    <h3>Puntaje: <input type="text" id="puntaje" disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="0"/> </h3>
+                </div><br>
+            </div>
+        </div>
+        <div id="pie" style="text-align:center">
+            <videogame-web>
+            </videogame-web>
+            <br><br>
+            <footer >
+              &copy; 2021
+              Angel Isaac Garrido Sánchez.
+            </footer>
+        </div>
+      </section>
+      <!-- ****************Termino de la división donde estan los custom-elements y el píe de página*****************************--> 
+      
+      <!-- ****************Script en donde estan las clases principales*****************************--> 
         <script>
+            //Función que me permite generar en aleatorio un número
             function aleatorio(menor, mayor) {
                 return menor + Math.floor(Math.random() * (mayor - menor + 1));
             }
+            
+            //Función que me ayuda a determinar cuando choca una nave, se hizo función ya que todas la usaban y no era necesario crearla en cada clase
             function chocaNave(e1, e2) {
-                const rE1 =
-                  e1.getBoundingClientRect();
-                const rE2 =
-                  e2.getBoundingClientRect();
+                const rE1 = e1.getBoundingClientRect();
+                const rE2 = e2.getBoundingClientRect();
                 
                 return (rE1.right >= rE2.left &&
-                  rE1.left <= rE2.right &&
-                  rE1.top <= rE2.bottom &&
-                  rE1.bottom >= rE2.top);
+                        rE1.left <= rE2.right &&
+                        rE1.top <= rE2.bottom &&
+                        rE1.bottom >= rE2.top);
                 
               }
+            
+            //Función del Game Over en la cual muestra el modal cuando se termina el juego
             function gameOver(){
-                  var instrucciones = document.getElementById('features_counter');
-                  //instrucciones.style.display = "block";
                   var videogame = document.getElementById('videogame');
                   //videogame.style.filter = "blur(4px)";
-                  //user.value="";
                   var mensajeGameOver = document.getElementById('mensaje');
                   mensajeGameOver.style.display = "block";
                   
-                  document.getElementById('mensajeMuerte').innerHTML = "Oh no "+user.value+" tu nave a chocado";
+                  document.getElementById('mensajeMuerte').innerHTML = "Oh no "+user.value+" tu nave a chocado!!";
                   document.getElementById('mensajePuntuacion').innerHTML = puntaje.value;
                   
                   avanza.value='false';
-                  ne=new ControladorNaveP();
-                  ne.detenerIntervalo();
                   
             }
-
+            //Interfaz que contiene los métodos que se repiten en cada clase que hereda su método
             /** @interface */
             class SeMueve {
               muévete() {
@@ -152,17 +177,14 @@
                 throw new Error("intf");
               }
             }
-
+            
+            //Clase que contiene los datos de la nave principal
             /** @implements {SeMueve} */
             class NavePrincipal extends HTMLElement {
-                  
               connectedCallback() {
-                
                 this.innerHTML = "<img id='imgP' src='' height='100px !important' width='150px !important'/>";
-                this.style.position =
-                  "fixed";
-                this.style.fontSize =
-                  "2rem";
+                this.style.position = "fixed";
+                this.style.fontSize = "2rem";
                 this.id="con";
                 this.resetearNave(this);
               }
@@ -174,22 +196,18 @@
                   value.style.bottom =`${value.y}px`;
                   
               }
+                
               muévete() {
-                this.x = (this.x + 30) %
-                  window.innerWidth;
-                this.style.right =
-                  `${this.x}px`;
+                this.x = (this.x + 30) % window.innerWidth;
+                this.style.right = `${this.x}px`;
               }
-              
+              //Método para mover la nave hacia arriba, se creo la variable value para que tambien funcione el movimiento al hacerlo con el teclado
               asciendeNave(){
-                 // window.alert(window.outerHeight);
-
                 var value = document.querySelector("nave-princi");
                 if(value.y < window.innerHeight /1.3){
-                    value.y = (value.y + 50) %
-                    window.innerHeight;
-                    value.style.bottom =
-                    `${value.y}px`;
+                   value.y = (value.y + 50) % window.innerHeight;
+                   value.style.bottom = `${value.y}px`;
+                    
                    if(imgP.src.includes('P2')){
                        imgP.src="img/naveP2.png";
                    }else{
@@ -197,32 +215,28 @@
                    }
                 }
               }
+              //Método para mover la nave hacia abajo, se creo la variable value para que tambien funcione el movimiento al hacerlo con el teclado
               desciendeNave(){
-                 /* window.alert(window.innerHeight/4);
-                  window.alert(this.y);*/
                 var value = document.querySelector("nave-princi");
                 if(value.y>window.innerHeight /4.2){
-                     value.y = (value.y - 50) %
-                    window.innerHeight;
-                    value.style.bottom =
-                    `${value.y}px`;
-                   if(imgP.src.includes('P2')){
+                    value.y = (value.y - 50) % window.innerHeight;
+                    value.style.bottom = `${value.y}px`;
+                   
+                    if(imgP.src.includes('P2')){
                        imgP.src="img/naveP2.png";
-                   }else{
+                    }else{
                        imgP.src="img/naveP.png";
-                   }
+                    }
                 }
 
               }
+              //Método para mover la nave hacia la derecha, se creo la variable value para que tambien funcione el movimiento al hacerlo con el teclado
                avanzaNave(){
-                 /* window.alert(window.innerHeight/4);*/
-                  //window.alert(this.x);
                    var value = document.querySelector("nave-princi");
                    if (value.x > 1*window.innerWidth/9) {
-                        value.x = (value.x - 50) % window.innerWidth;
-                        value.style.right= 
-                        `${value.x}px`;
-                       
+                       value.x = (value.x - 50) % window.innerWidth;
+                       value.style.right= `${value.x}px`;
+
                        if(imgP.src.includes('P2')){
                            imgP.src="img/naveP2De.png";
                        }else{
@@ -231,13 +245,13 @@
                     }
 
                }
+               //Método para mover la nave hacia atrás, se creo la variable value para que tambien funcione el movimiento al hacerlo con el teclado
                 retrocedeNave(){
-                 /* window.alert(window.innerHeight/4);*/
                     var value = document.querySelector("nave-princi");
                     if (value.x <  4.2 * window.innerWidth / 5) {
                         value.x = (value.x + 50) % window.innerWidth;
-                        value.style.right= 
-                        `${value.x}px`;    
+                        value.style.right= `${value.x}px`;   
+                        
                         if(imgP.src.includes('P2')){
                            imgP.src="img/naveP2Iz.png";
                         }else{
@@ -246,85 +260,61 @@
                     }
 
                 }
-                actualizaNave(valor){
-                    //var im = document.getElementById('imgP');
-                    imgP.style =
-                        `left: ${xN}px; bottom: ${yMenor}px;top:${yN}px; right: ${xMenor}px;`;
-                }
 
               }
 
-            customElements.define(
-              "nave-princi", NavePrincipal);
-
+            //Clase que contiene los datos de la nave enemiga que es de color amarillo
             /** @implements {SeMueve} */
-            class NaveEnemigaYellow
-              extends HTMLElement {
+            class NaveEnemigaYellow extends HTMLElement {
               connectedCallback() {
                 this.innerHTML = "<img src='img/enemy.png' id='movNav' height='100px !important' width='150px !important' style='transform: rotate(180deg);'/>";
-                this.style.position =
-                  "fixed";
-                this.style.fontSize =
-                  "2rem";
+                this.style.position = "fixed";
+                this.style.fontSize = "2rem";
                 this.resetearNave(this);
-              }
+              } 
+                
               resetearNave(value){
                   value.x = aleatorio(0,1*window.innerWidth/9);
                   value.y = 50;
                   value.style.left =`${value.x}px`;
                   value.style.top =`${value.y}px`;
-                  
               }
             
               muévete() {
-                if (chocaNave(this, imgP) && avanza.value=='true' ) {
-                  if(!imgP.src.includes('media')){
-                    imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
-                  }
+                if (chocaNave(this, imgP) && avanza.value=='true' ) {//Si choca la nave se hace una explosión
+                   if(!imgP.src.includes('media')){
+                       imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
+                   }
                   gameOver();
-                }else{
-                    if(this.y<window.innerHeight/1.5){
                   
-                      /*this.x = window.innerWidth / 3 +
-                       window.innerWidth / 5 * Math.sin(0.2 * this.y);*/
-                      this.x =
-                          (this.x + 6) % window.innerWidth;
-                      this.y =
-                          (this.y + 6) % window.innerHeight;
-                        
+                }else{
+                   if(this.y<window.innerHeight/1.5){
+                      this.x = (this.x + 6) % window.innerWidth;
+                      this.y = (this.y + 6) % window.innerHeight;
                    }else{
                       if(avanza.value=='true'){
                          puntaje.value=parseInt(puntaje.value,10)+1;  
                       }
                       
-                      this.x =aleatorio(0,
-                      Math.floor(
-                        window.innerWidth));
+                      this.x =aleatorio(0,Math.floor(window.innerWidth));
                       this.y =50;
                    }
-                      this.style.left =
-                          `${this.x}px`;
-                      this.style.top =
-                          `${this.y}px`;
-                   //this.y = (this.y + 1) % window.innerWidth;
+                    
+                  this.style.left =
+                      `${this.x}px`;
+                  this.style.top =
+                      `${this.y}px`;
                 }
-                  
-               
               }
             }
-            customElements.define(
-              "nave-yellow", NaveEnemigaYellow);
-
+            
+            //Clase que contiene los datos de la nave enemiga que es de color rojo
             /** @implements {SeMueve} */
-            class NaveEnemigaRed
-              extends HTMLElement {
+            class NaveEnemigaRed extends HTMLElement {
               connectedCallback() {
-                
                 this.innerHTML = "<img src='img/enemy2.png' id='movNav' height='100px !important' width='150px !important'/>";
-                this.style.position =
-                  "fixed";
-                this.style.fontSize =
-                  "2rem";
+                this.style.position = "fixed";
+                this.style.fontSize = "2rem";
                 this.resetearNave(this);
               }
               
@@ -338,96 +328,78 @@
                   
               muévete() {
                 if (chocaNave(this, imgP) && avanza.value=='true') {
-                  if(!imgP.src.includes('media')){
-                    imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
-                  }
-                  gameOver();
+                   if(!imgP.src.includes('media')){
+                     imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
+                   }
+                    
+                   gameOver();
+                    
                 }else{
                     if(this.y<window.innerHeight/1.5){
-                      this.y = (this.y + 6) %
-                      window.innerHeight;
-                       this.style.top =
-                      `${this.y}px`;
-                   }else{
-                      if(avanza.value=='true'){
-                         puntaje.value=parseInt(puntaje.value,10)+1;  
-                      }
-                      this.x =aleatorio(0,
-                      Math.floor(
-                        window.innerWidth));
-                      this.y =50;
-                       this.style.left =
-                          `${this.x}px`;
-                      this.style.top =
-                          `${this.y}px`;
+                       this.y = (this.y + 6) % window.innerHeight;
+                       this.style.top = `${this.y}px`;
+                    }else{
+                        if(avanza.value=='true'){
+                            puntaje.value=parseInt(puntaje.value,10)+1;  
+                        }
+                        this.x =aleatorio(0,Math.floor(window.innerWidth));
+                        this.y =50;
+                        this.style.left = `${this.x}px`;
+                        this.style.top = `${this.y}px`;
                    }
                 }
-               
-                  
-              
-
               }
             }
-            customElements.define(
-              "nave-red", NaveEnemigaRed);
-
-           /*---------------------Controlador para la nave principal---------------------*/ 
+            
+          /*---------------------Controlador para la nave principal---------------------*/ 
 
           class ControladorNaveP extends HTMLElement {
+              
             connectedCallback() {
-                
-                this.retrocedeNave = this.
-                retrocedeNave.bind(this);
-                this.avanzaNave = this.
-                avanzaNave.bind(this);
-                this.asciendeNave = this.
-                asciendeNave.bind(this);
-                this.desciendeNave = this.
-                desciendeNave.bind(this);
+                this.retrocedeNave = this.retrocedeNave.bind(this);
+                this.avanzaNave = this.avanzaNave.bind(this);
+                this.asciendeNave = this.asciendeNave.bind(this);
+                this.desciendeNave = this.desciendeNave.bind(this);
 
-              this.innerHTML =
-                /* html */
-                `
-                  <button onclick="this.
-                    parentElement.asciendeNave();"  style="margin:10px; background:transparent;border:2px gold solid;color:gold; border-radius:10px">
-                    ▲
-                  </button><br>
-                  <button onclick="this.
-                    parentElement.retrocedeNave();" style="background:transparent;border:2px gold solid;color:gold; border-radius:10px">
-                    ◀
-                  </button>
-                  <button onclick="this.
-                    parentElement.desciendeNave();"  style=" background:transparent;border:2px gold solid;color:gold; border-radius:10px">
-                    ▼
-                  </button>
-                  <button onclick="this.
-                    parentElement.avanzaNave();"  style="background:transparent;border:2px gold solid;color:gold; border-radius:10px">
-                    ▶
-                  </button>
-                    
-                `;
-              this.naveP =
-                new NavePrincipal();
+                this.innerHTML = //se meten los bótones para mover
+                    `
+                      <button onclick="this.
+                        parentElement.asciendeNave();"  style="margin:10px; background:transparent;border:2px gold solid;color:gold; border-radius:10px">
+                        ▲
+                      </button><br>
+                      <button onclick="this.
+                        parentElement.retrocedeNave();" style="background:transparent;border:2px gold solid;color:gold; border-radius:10px">
+                        ◀
+                      </button>
+                      <button onclick="this.
+                        parentElement.desciendeNave();"  style=" background:transparent;border:2px gold solid;color:gold; border-radius:10px">
+                        ▼
+                      </button>
+                      <button onclick="this.
+                        parentElement.avanzaNave();"  style="background:transparent;border:2px gold solid;color:gold; border-radius:10px">
+                        ▶
+                      </button>
+
+                    `;
+              this.naveP = new NavePrincipal();
               this.enemigas =
                 [new NaveEnemigaRed(),
                 new NaveEnemigaYellow(),
                 new NaveEnemigaRed(),
                 new NaveEnemigaYellow(),
                 ];
+                
               this.append(this.naveP);
                 
               for (let nav of this.enemigas) {
-                    const jss =setInterval(function(){
-                        nav.muévete();
-                    },45);
+                setInterval(function(){
+                   nav.muévete();
+                },40);
                 this.append(nav);
               }
 
-            }
-                
-              detenerIntervalo(){
-                  clearInterval(this.jss);
-              } 
+           }
+               
               retrocedeNave() {
                 this.naveP.retrocedeNave();
               }
@@ -444,38 +416,20 @@
               
 
           }
-          customElements.define(
-            "controlador-web",
-            ControladorNaveP);
-          </script>
-
-        
-        <div class="container" >
-            <div class="row justify-content-center" style="color: gold">
-                <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center">
-                    <h3>Usuario: <input type="text" disabled  id="user" style="background:transparent;border:0px solid black;color:gold;width:190px; " value=""/></h3>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;">
-                    <h3>Puntaje: <input type="text" id="puntaje" disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="0"/> </h3>
-                </div><br>
-            </div>
-        </div>
-        
-        
-          <div id="pie" style="text-align:center">
-            <controlador-web>
-            </controlador-web><br><br>
-              <footer >
-                &copy; 2021
-                Angel Isaac Garrido Sánchez.
-              </footer>
-          </div>
-        
-      </section>
+            
+          //Se definen las clases creadas anteriormente    
+          customElements.define("nave-princi", NavePrincipal);
+          customElements.define("nave-yellow", NaveEnemigaYellow);  
+          customElements.define("nave-red", NaveEnemigaRed);
+          customElements.define("videogame-web",ControladorNaveP);
+      </script>
+      <!-- *************Termina el script en donde estan las clases principales*******************--> 
+      
+      <!-- ****************Este script sirve para la funcionalidad de la página***********************--> 
       <script>
-        /*Este script me sirve para la funcionalidad de la página*/
         pie.style=`margin-top:${2.7* window.innerHeight / 3.7}px;text-align: center; font-size:23px;color:white`;
           
+        //Método para que se pueda mover mediante el teclado
         document.addEventListener('keydown', mover);
         function mover(e){
             var naveP = new NavePrincipal();
@@ -498,32 +452,38 @@
                if(avanza.value=='true'){
                   naveP.desciendeNave();
                }
-                
             }
          }
-        function asignarID(idV){
-           // $("#nave").val(idV);
-            
+        //Función asignar la nave que escogio el usuario y para comenzar el juego
+        function comenzarJuego(srcNave){
             var name = document.getElementById('name');
-            //window.alert(name.value);
+            
             if(name.value != ''){
                 avanza.value='true';
                 puntaje.value="0";
+                
                 var mensajeGameOver = document.getElementById('mensaje');
                 mensajeGameOver.style.display = "none";
+                
                 var im = document.getElementById('imgP');
-                im.src = idV;
+                im.src = srcNave;
+                
                 var user = document.getElementById('user');
                 user.value = name.value;
+                
                 var instrucciones = document.getElementById('features_counter');
                 instrucciones.style.display = "none";
+                
                 var videogame = document.getElementById('videogame');
                 videogame.style.display = "block";
                 //videogame.style.filter = "blur(0px)";
+                
                 var nP=new NavePrincipal();
                 nP.resetearNave(document.querySelector("nave-princi"));
+                
                 var nR=new NaveEnemigaRed();
                 nR.resetearNave(document.querySelector("nave-red"));
+                
                 var nY=new NaveEnemigaYellow();
                 nY.resetearNave(document.querySelector("nave-yellow"));
             }else{
@@ -531,7 +491,8 @@
             }
             
         }
-      </script>  
+      </script>
+     <!-- ****************Termina el script para la funcionalidad de la página***********************-->  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
