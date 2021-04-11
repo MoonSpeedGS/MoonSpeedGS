@@ -23,10 +23,10 @@
                 
                 <div class="row justify-content-center" style="text-align:center">
                     <div class="col-lg-12 col-md-12 col-sm-12" style="text-align: center;margin-bottom: 0px">
-                        <h5 style="color:gold;" style="margin-bottom: 0px">Puntuación</h5>
+                        <h5 style="color:gold;" style="margin-bottom: 0px">Astronautas salvados</h5>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12" style="text-align: center">
-                        <h1 style="color:white;" id="mensajePuntuacion"></h1>
+                        <h1 style="color:gold;" id="mensajePuntuacion"></h1>
                     </div><br>
                     <div class="col-lg-12 col-md-12 col-sm-12" style="text-align: center">
                         <h5 style="color:white;">Para volver a jugar selecciona la nave que deseas</h5>
@@ -77,7 +77,7 @@
                                         Para mover la nave estan las teclas de movimiento del teclado y los botones que se muestran en la pantalla
                                     </p><br>
                                     <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                        Se incrementarán los puntos cuando las naves enemigas lleguen a la parte inferior para ello deberás de esquivarlas.
+                                        Se incrementarán los puntos cuando salves a los astronautas que vagan por el espacio.
                                     </p><br>
                                     <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
                                         Se terminará el juego cuando se choque con alguna nave enemiga.
@@ -125,7 +125,7 @@
                     <h3>Usuario: <input type="text" disabled  id="user" style="background:transparent;border:0px solid black;color:gold;width:190px; " value=""/></h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;">
-                    <h3>Puntaje: <input type="text" id="puntaje" disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="0"/> </h3>
+                    <h3>astronauta: <input type="text" id="astronauta" disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="0"/> </h3>
                 </div><br>
             </div>
         </div>
@@ -168,7 +168,7 @@
                   mensajeGameOver.style.display = "block";
                   
                   document.getElementById('mensajeMuerte').innerHTML = "Oh no "+user.value+" tu nave a chocado!!";
-                  document.getElementById('mensajePuntuacion').innerHTML = puntaje.value;
+                  document.getElementById('mensajePuntuacion').innerHTML = astronauta.value;
                   
                   avanza.value='false';
                   
@@ -179,7 +179,7 @@
               muévete() {
                 throw new Error("intf");
               }
-              resetearNave(value){
+              resetearN(value){
                 throw new Error("intf");
               }
             }
@@ -192,10 +192,10 @@
                 this.style.position = "fixed";
                 this.style.fontSize = "2rem";
                 this.id="con";
-                this.resetearNave(this);
+                this.resetearN(this);
               }
                 
-              resetearNave(value){
+              resetearN(value){
                   value.x = Math.floor(window.innerWidth/2.3);
                   value.y = window.innerHeight /4.2;
                   value.style.right =`${value.x}px`;
@@ -207,6 +207,7 @@
                 this.x = (this.x + 30) % window.innerWidth;
                 this.style.right = `${this.x}px`;
               }
+                
               //Método para mover la nave hacia arriba, se creo la variable value para que tambien funcione el movimiento al hacerlo con el teclado
               asciendeNave(){
                 var value = document.querySelector("nave-princi");
@@ -234,7 +235,6 @@
                        imgP.src="img/naveP.png";
                     }
                 }
-
               }
               //Método para mover la nave hacia la derecha, se creo la variable value para que tambien funcione el movimiento al hacerlo con el teclado
                avanzaNave(){
@@ -249,7 +249,6 @@
                            imgP.src="img/navePDe.png";
                        }
                     }
-
                }
                //Método para mover la nave hacia atrás, se creo la variable value para que tambien funcione el movimiento al hacerlo con el teclado
                 retrocedeNave(){
@@ -264,10 +263,65 @@
                            imgP.src="img/navePIz.png";
                         }
                     }
-
                 }
 
               }
+            
+            //Clase que contiene los datos del astronauta que recogera la nave
+            /** @implements {SeMueve} */
+            class AstronautaPerdido extends HTMLElement {
+              connectedCallback() {
+                this.innerHTML = "<img src='img/astro.png' id='astro' height='50px !important' width='60px !important'/>";
+                this.style.position = "fixed";
+                this.style.fontSize = "2rem";
+                this.resetearN(this);
+              }
+              
+              resetearN(value){
+                  /*value.x = aleatorio(0,Math.floor(window.innerWidth));
+                  value.y = aleatorio(0,Math.floor(window.innerHeight));
+                  value.style.left =`${value.x}px`;
+                  value.style.top =`${value.y}px`;*/
+                  value.x = aleatorio(0,1*window.innerWidth/9);
+                  value.y = 50;
+                  value.style.left =`${value.x}px`;
+                  value.style.top =`${value.y}px`;
+              }
+                  
+              muévete() {
+                  
+                 if(chocaNave(this, imgP) && avanza.value=='true'){
+                     astronauta.value=parseInt(astronauta.value,10)+1; 
+                     //this.resetearN(document.querySelector("astro-perdido"));
+                      this.x =aleatorio(0,Math.floor(window.innerWidth));
+                     this.y =50;
+                     this.style.right =
+                          `${this.x}px`;
+                      this.style.top =
+                          `${this.y}px`;
+                 }else{
+                     if(avanza.value=='true'){
+                          this.x = (this.x + 4) % window.innerWidth;
+                          this.y = (this.y + 4) % window.innerHeight;
+                          this.style.left =
+                              `${this.x}px`;
+                          this.style.top =
+                              `${this.y}px`;
+                     }
+                       /*for(var i=this.y;i<this.y-80;i--){
+                            this.y = (this.y - 6) % window.innerHeight;
+                            this.style.top = `${this.y}px`;
+                       } 
+                       for(var i=this.y;i<this.y+80;i++){
+                            this.y = (this.y + 6) % window.innerHeight;
+                            this.style.top = `${this.y}px`;
+                       }*/
+                      
+                 }
+                
+                
+              }
+            }
 
             //Clase que contiene los datos de la nave enemiga que es de color amarillo
             /** @implements {SeMueve} */
@@ -276,11 +330,11 @@
                 this.innerHTML = "<img src='img/enemy.png' id='movNav' height='100px !important' width='150px !important' style='transform: rotate(180deg);'/>";
                 this.style.position = "fixed";
                 this.style.fontSize = "2rem";
-                this.resetearNave(this);
+                this.resetearN(this);
               } 
                 
-              resetearNave(value){
-                  value.x = aleatorio(0,1*window.innerWidth/9);
+              resetearN(value){
+                  value.x = aleatorio(0,Math.floor(window.innerWidth));
                   value.y = 50;
                   value.style.left =`${value.x}px`;
                   value.style.top =`${value.y}px`;
@@ -296,13 +350,9 @@
                 }else{
                    if(avanza.value=='true'){
                        if(this.y<window.innerHeight/1.5){
-                          this.x = (this.x + 7) % window.innerWidth;
-                          this.y = (this.y + 7) % window.innerHeight;
+                          this.x = (this.x + 3.5) % window.innerWidth;
+                          this.y = (this.y + 3.5) % window.innerHeight;
                        }else{
-                          if(avanza.value=='true'){
-                             puntaje.value=parseInt(puntaje.value,10)+1;  
-                          }
-
                           this.x =aleatorio(0,Math.floor(window.innerWidth));
                           this.y =50;
                        }
@@ -324,11 +374,11 @@
                 this.innerHTML = "<img src='img/enemy2.png' id='movNav' height='100px !important' width='150px !important'/>";
                 this.style.position = "fixed";
                 this.style.fontSize = "2rem";
-                this.resetearNave(this);
+                this.resetearN(this);
               }
               
-              resetearNave(value){
-                  value.x = aleatorio(0,1*window.innerWidth/9);
+              resetearN(value){
+                  value.x = aleatorio(0,Math.floor(window.innerWidth));
                   value.y = 50;
                   value.style.left =`${value.x}px`;
                   value.style.top =`${value.y}px`;
@@ -346,12 +396,9 @@
                 }else{
                     if(avanza.value=='true'){
                         if(this.y<window.innerHeight/1.5){
-                           this.y = (this.y + 7) % window.innerHeight;
+                           this.y = (this.y + 3.5) % window.innerHeight;
                            this.style.top = `${this.y}px`;
                         }else{
-                            if(avanza.value=='true'){
-                                puntaje.value=parseInt(puntaje.value,10)+1;  
-                            }
                             this.x =aleatorio(0,Math.floor(window.innerWidth));
                             this.y =50;
                             this.style.left = `${this.x}px`;
@@ -393,13 +440,13 @@
 
                     `;
               this.naveP = new NavePrincipal();
+              this.astronaP = new AstronautaPerdido();
               this.enemigas =
                 [new NaveEnemigaRed(),
                 new NaveEnemigaYellow(),
                 new NaveEnemigaRed(),
                 new NaveEnemigaYellow(),
-                new NaveEnemigaRed(),
-                new NaveEnemigaYellow()
+                new AstronautaPerdido()
                 ];
                 
               this.append(this.naveP);
@@ -432,6 +479,7 @@
             
           //Se definen las clases creadas anteriormente    
           customElements.define("nave-princi", NavePrincipal);
+          customElements.define("astro-perdido", AstronautaPerdido);
           customElements.define("nave-yellow", NaveEnemigaYellow);  
           customElements.define("nave-red", NaveEnemigaRed);
           customElements.define("videogame-web",ControladorNaveP);
@@ -473,7 +521,7 @@
             
             if(name.value != ''){
                 avanza.value='true';
-                puntaje.value="0";
+                astronauta.value="0";
                 
                 var mensajeGameOver = document.getElementById('mensaje');
                 mensajeGameOver.style.display = "none";
@@ -491,14 +539,17 @@
                 videogame.style.display = "block";
                 //videogame.style.filter = "blur(0px)";
                 
-                var nP=new NavePrincipal();
-                nP.resetearNave(document.querySelector("nave-princi"));
-                
                 var nR=new NaveEnemigaRed();
-                nR.resetearNave(document.querySelector("nave-red"));
+                nR.resetearN(document.querySelector("nave-red"));
                 
                 var nY=new NaveEnemigaYellow();
-                nY.resetearNave(document.querySelector("nave-yellow"));
+                nY.resetearN(document.querySelector("nave-yellow"));
+                
+                var nP=new NavePrincipal();
+                nP.resetearN(document.querySelector("nave-princi"));
+                
+                var as=new AstronautaPerdido();
+                nY.resetearN(document.querySelector("astro-perdido"));
             }else{
                 window.alert('Error, por favor ingrese un nombre');
             }
