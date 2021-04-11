@@ -271,7 +271,7 @@
             /** @implements {SeMueve} */
             class AstronautaPerdido extends HTMLElement {
               connectedCallback() {
-                this.innerHTML = "<img src='img/astro.png' id='astro' height='50px !important' width='60px !important'/>";
+                this.innerHTML = "<img src='img/astro.png' id='astro' height='50px !important' width='50px !important'/>";
                 this.style.position = "fixed";
                 this.style.fontSize = "2rem";
                 this.resetearN(this);
@@ -293,29 +293,25 @@
                  if(chocaNave(this, imgP) && avanza.value=='true'){
                      astronauta.value=parseInt(astronauta.value,10)+1; 
                      //this.resetearN(document.querySelector("astro-perdido"));
-                      this.x =aleatorio(0,Math.floor(window.innerWidth));
+                     this.x =aleatorio(0,Math.floor(window.innerWidth));
                      this.y =50;
-                     this.style.right =
+                     this.style.right =`${this.x}px`;
+                     this.style.top =`${this.y}px`;
+                 }else{
+                     if(avanza.value=='true'){
+                       if(this.y<window.innerHeight/1.5){
+                          this.x = (this.x + 4) % window.innerWidth;
+                          this.y = (this.y + 4) % window.innerHeight;
+                       }else{
+                          this.x =aleatorio(0,Math.floor(window.innerWidth));
+                          this.y =50;
+                       }
+
+                      this.style.left =
                           `${this.x}px`;
                       this.style.top =
                           `${this.y}px`;
-                 }else{
-                     if(avanza.value=='true'){
-                          this.x = (this.x + 4) % window.innerWidth;
-                          this.y = (this.y + 4) % window.innerHeight;
-                          this.style.left =
-                              `${this.x}px`;
-                          this.style.top =
-                              `${this.y}px`;
-                     }
-                       /*for(var i=this.y;i<this.y-80;i--){
-                            this.y = (this.y - 6) % window.innerHeight;
-                            this.style.top = `${this.y}px`;
-                       } 
-                       for(var i=this.y;i<this.y+80;i++){
-                            this.y = (this.y + 6) % window.innerHeight;
-                            this.style.top = `${this.y}px`;
-                       }*/
+                    }
                       
                  }
                 
@@ -345,6 +341,10 @@
                    if(!imgP.src.includes('media')){
                        imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
                    }
+                     this.x =aleatorio(0,Math.floor(window.innerWidth));
+                     this.y =50;
+                     this.style.left = `${this.x}px`;
+                     this.style.top =`${this.y}px`;
                   gameOver();
                   
                 }else{
@@ -357,10 +357,8 @@
                           this.y =50;
                        }
 
-                      this.style.left =
-                          `${this.x}px`;
-                      this.style.top =
-                          `${this.y}px`;
+                      this.style.left = `${this.x}px`;
+                      this.style.top = `${this.y}px`;
                    }
                    
                 }
@@ -390,7 +388,10 @@
                    if(!imgP.src.includes('media')){
                      imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
                    }
-                    
+                    this.x =aleatorio(0,Math.floor(window.innerWidth));
+                    this.y =50;
+                    this.style.left = `${this.x}px`;
+                    this.style.top = `${this.y}px`; 
                    gameOver();
                     
                 }else{
