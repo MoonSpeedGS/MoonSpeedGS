@@ -12,6 +12,15 @@
    
   </head>
   <body>
+     <audio id="fondo" controls>
+        <source type="audio/mp3" src="music/musicaFondo.mp3">
+     </audio>
+     <audio id="thanks" controls>
+        <source type="audio/mp3" src="music/thanks.mp3">
+     </audio>
+     <audio id="murio" controls>
+        <source type="audio/mp3" src="music/gameover.mp3">
+     </audio>
     <!-- ****************División del modal para mostrar cuando se termina el juego*****************************--> 
     <div id="mensaje" class="dialog-overlay" style=" display:run-in;">
         <div class="dialog-card" style=";padding:0px;border:3px gold solid;background: transparent">
@@ -292,6 +301,8 @@
                   
                  if(chocaNave(this, imgP) && avanza.value=='true'){
                      astronauta.value=parseInt(astronauta.value,10)+1; 
+                     document.getElementById("thanks").play();
+                     
                      //this.resetearN(document.querySelector("astro-perdido"));
                      this.x =aleatorio(0,Math.floor(window.innerWidth));
                      this.y =50;
@@ -341,6 +352,7 @@
                    if(!imgP.src.includes('media')){
                        imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
                    }
+                    document.getElementById("murio").play();
                      this.x =aleatorio(0,Math.floor(window.innerWidth));
                      this.y =50;
                      this.style.left = `${this.x}px`;
@@ -388,6 +400,7 @@
                    if(!imgP.src.includes('media')){
                      imgP.src = "https://media.giphy.com/media/d4aVHC1HKnButuXC/giphy.gif";
                    }
+                    document.getElementById("murio").play();
                     this.x =aleatorio(0,Math.floor(window.innerWidth));
                     this.y =50;
                     this.style.left = `${this.x}px`;
@@ -413,7 +426,6 @@
           /*---------------------Controlador para la nave principal---------------------*/ 
 
           class ControladorNaveP extends HTMLElement {
-              
             connectedCallback() {
                 this.retrocedeNave = this.retrocedeNave.bind(this);
                 this.avanzaNave = this.avanzaNave.bind(this);
@@ -490,7 +502,7 @@
       <!-- ****************Este script sirve para la funcionalidad de la página***********************--> 
       <script>
         pie.style=`margin-top:${2.7* window.innerHeight / 3.7}px;text-align: center; font-size:23px;color:white`;
-          
+        
         //Método para que se pueda mover mediante el teclado
         document.addEventListener('keydown', mover);
         function mover(e){
@@ -519,7 +531,7 @@
         //Función asignar la nave que escogio el usuario y para comenzar el juego
         function comenzarJuego(srcNave){
             var name = document.getElementById('name');
-            
+            document.getElementById("fondo").play();
             if(name.value != ''){
                 avanza.value='true';
                 astronauta.value="0";
