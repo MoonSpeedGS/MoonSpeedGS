@@ -306,13 +306,13 @@
                      //this.resetearN(document.querySelector("astro-perdido"));
                      this.x =aleatorio(0,Math.floor(window.innerWidth));
                      this.y =50;
-                     this.style.right =`${this.x}px`;
+                     this.style.left =`${this.x}px`;
                      this.style.top =`${this.y}px`;
                  }else{
                      if(avanza.value=='true'){
                        if(this.y<window.innerHeight/1.5){
-                          this.x = (this.x + 4) % window.innerWidth;
-                          this.y = (this.y + 4) % window.innerHeight;
+                          this.x = (this.x + 2) % window.innerWidth;
+                          this.y = (this.y + 2) % window.innerHeight;
                        }else{
                           this.x =aleatorio(0,Math.floor(window.innerWidth));
                           this.y =50;
