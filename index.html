@@ -205,8 +205,8 @@
               }
                 
               resetearN(value){
-                  value.x = Math.floor(window.innerWidth/2.3);
-                  value.y = window.innerHeight /4.2;
+                  value.x = Math.floor(window.innerWidth/2.1);
+                  value.y = window.innerHeight /3.6;
                   value.style.right =`${value.x}px`;
                   value.style.bottom =`${value.y}px`;
                   
@@ -234,7 +234,7 @@
               //Método para mover la nave hacia abajo, se creo la variable value para que tambien funcione el movimiento al hacerlo con el teclado
               desciendeNave(){
                 var value = document.querySelector("nave-princi");
-                if(value.y>window.innerHeight /4.2){
+                if(value.y>window.innerHeight /3.3){
                     value.y = (value.y - 50) % window.innerHeight;
                     value.style.bottom = `${value.y}px`;
                    
@@ -248,7 +248,7 @@
               //Método para mover la nave hacia la derecha, se creo la variable value para que tambien funcione el movimiento al hacerlo con el teclado
                avanzaNave(){
                    var value = document.querySelector("nave-princi");
-                   if (value.x > 1*window.innerWidth/9) {
+                   if (value.x > 0.8*window.innerWidth/9) {
                        value.x = (value.x - 50) % window.innerWidth;
                        value.style.right= `${value.x}px`;
 
@@ -310,7 +310,7 @@
                      this.style.top =`${this.y}px`;
                  }else{
                      if(avanza.value=='true'){
-                       if(this.y<window.innerHeight/1.5){
+                       if(this.y<window.innerHeight/1.6){
                           this.x = (this.x + 4) % window.innerWidth;
                           this.y = (this.y + 4) % window.innerHeight;
                        }else{
@@ -361,7 +361,7 @@
                   
                 }else{
                    if(avanza.value=='true'){
-                       if(this.y<window.innerHeight/1.5){
+                       if(this.y<window.innerHeight/1.6){
                           this.x = (this.x + 3.5) % window.innerWidth;
                           this.y = (this.y + 3.5) % window.innerHeight;
                        }else{
@@ -409,7 +409,7 @@
                     
                 }else{
                     if(avanza.value=='true'){
-                        if(this.y<window.innerHeight/1.5){
+                        if(this.y<window.innerHeight/1.6){
                            this.y = (this.y + 3.5) % window.innerHeight;
                            this.style.top = `${this.y}px`;
                         }else{
@@ -450,7 +450,6 @@
                         parentElement.avanzaNave();"  style="background:transparent;border:2px gold solid;color:gold; border-radius:10px">
                         ▶
                       </button>
-
                     `;
               this.naveP = new NavePrincipal();
               this.astronaP = new AstronautaPerdido();
