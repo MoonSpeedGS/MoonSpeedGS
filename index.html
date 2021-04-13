@@ -66,40 +66,50 @@
                                 <div class="col-lg-12">
                                     <div class="row justify-content-center" style="text-align:center">
                                         <div class="col-lg-4 col-md-3 col-sm-3" style="text-align: right">
-                                            <img src="img/nave2.png" />
+                                            <img src="img/nave2.png" height="80px" width="80px"/>
                                         </div>
                                         <div class="col-lg-4 col-md-5 col-sm-5">
                                             <h1 style="color:gold;text-align: center;font-family: Showcard Gothic,sans-serif">Moon Speed</h1><br>
                                         </div>
                                         <div class="col-lg-4 col-md-3 col-sm-3" style="text-align: left">
-                                            <img src="img/nave2.png" />
+                                            <img src="img/nave2.png" height="80px" width="80px"/>
                                         </div>
                                     </div>
 
                                     <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                        Bienvenidos a MoonSpeed
+                                        Bienvenidos a MoonSpeed<br> ¡Tripulante necesitamos de tu ayuda para salvar a los astronautas! 
                                     </p><br>
                                     <h4 style="text-align: center; margin-bottom:0px;color: gold;">
                                         Instrucciones:
                                     </h4><br>
                                     <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                        Para mover la nave estan las teclas de movimiento del teclado y los botones que se muestran en la pantalla
+                                        Para mover la nave estan las teclas de movimiento del teclado o los botones que se muestran en la pantalla<br>
+                                         <button disabled style="margin:3px; background:transparent;border:2px gold solid;color:gold; border-radius:10px;font-size: 14px">
+                                            ▲
+                                          </button><br>
+                                          <button disabled style="background:transparent;border:2px gold solid;color:gold; border-radius:10px;font-size: 14px">
+                                            ◀
+                                          </button>
+                                          <button disabled style=" background:transparent;border:2px gold solid;color:gold; border-radius:10px;font-size: 14px">
+                                            ▼
+                                          </button>
+                                          <button disabled style="background:transparent;border:2px gold solid;color:gold; border-radius:10px;font-size: 14px">
+                                            ▶
+                                          </button>
                                     </p><br>
                                     <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                        Se incrementarán los puntos cuando salves a los astronautas que vagan por el espacio.
+                                        Se incrementarán los puntos cuando salves a los astronautas que vagan por el espacio
+                                        y se terminará el juego cuando choques con alguna nave enemiga.
                                     </p><br>
-                                    <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                        Se terminará el juego cuando se choque con alguna nave enemiga.
-                                    </p><br>
-                                    <p style="text-align: center; margin-bottom:0px;color: white;font-size: 20px">
-                                        Ingrese su nombre de usuario
-                                    </p><br>
+                                    <p style="text-align: center; margin-bottom:0px;color: gold;font-size: 20px">
+                                        Ingrese tu nombre de tripulante
+                                    </p>
                                     <div style="text-align: center">
                                         <input type="text" id="name" name="name" required="true" value="" tabindex="1" minlength="1" maxlength="10" 
                                            style="border: 2px solid gold; border-radius: 15px; padding: 8px;margin-top: 15px;background: transparent;color: gold;text-align: center"/><br>
                                     </div><br><br>
                                     <p style="text-align: center; margin-bottom:0px;color: gold;font-size: 20px">
-                                        Selecciona la nave preferida para empezar a jugar
+                                        Selecciona la nave preferida para comenzar el juego
                                     </p><br>
                                     <div class="row justify-content-center" style="text-align:center">
                                         <div class="col-lg-3 col-md-6 col-sm-6" style="text-align: center">
@@ -563,7 +573,7 @@
                 var as=new AstronautaPerdido();
                 nY.resetearN(document.querySelector("astro-perdido"));
             }else{
-                window.alert('Error, por favor ingrese un nombre');
+                window.alert('Error, por favor ingrese un nombre de tripulante');
             }
             
         }
