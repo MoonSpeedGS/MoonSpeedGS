@@ -141,10 +141,10 @@
         <div class="container" >
             <div class="row justify-content-center" style="color: gold">
                 <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center">
-                    <h3>Usuario: <input type="text" disabled  id="user" style="background:transparent;border:0px solid black;color:gold;width:190px; " value=""/></h3>
+                    <h3>Tripulante: <input type="text" disabled  id="user" style="background:transparent;border:0px solid black;color:gold;width:190px; " value=""/></h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;">
-                    <h3>astronauta: <input type="text" id="astronauta" disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="0"/> </h3>
+                    <h3>Astronautas: <input type="text" id="astronauta" disabled style="background:transparent;border:0px solid black;color:gold;width:60px; " value="0"/> </h3>
                 </div><br>
             </div>
         </div>
@@ -468,7 +468,8 @@
                 new NaveEnemigaYellow(),
                 new NaveEnemigaRed(),
                 new NaveEnemigaYellow(),
-                new AstronautaPerdido()
+                new AstronautaPerdido(),
+		new AstronautaPerdido()
                 ];
                 
               this.append(this.naveP);
@@ -476,7 +477,7 @@
               for (let nav of this.enemigas) {
                 setInterval(function(){
                    nav.muévete();
-                },27);
+                },36);
                 this.append(nav);
               }
 
