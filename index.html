@@ -32,7 +32,7 @@
                 
                 <div class="row justify-content-center" style="text-align:center">
                     <div class="col-lg-12 col-md-12 col-sm-12" style="text-align: center;margin-bottom: 0px">
-                        <h6 style="color:gold;" style="margin-bottom: 0px">Astronautas salvados</h6>
+                        <h5 style="color:gold;" style="margin-bottom: 0px">Astronautas salvados</h5>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12" style="text-align: center">
                         <h1 style="color:gold;" id="mensajePuntuacion"></h1>
@@ -311,8 +311,8 @@
                  }else{
                      if(avanza.value=='true'){
                        if(this.y<window.innerHeight/1.5){
-                          this.x = (this.x + 2) % window.innerWidth;
-                          this.y = (this.y + 2) % window.innerHeight;
+                          this.x = (this.x + 4) % window.innerWidth;
+                          this.y = (this.y + 4) % window.innerHeight;
                        }else{
                           this.x =aleatorio(0,Math.floor(window.innerWidth));
                           this.y =50;
